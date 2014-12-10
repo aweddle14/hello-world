@@ -72,16 +72,30 @@ System.out.println ();
 		System.out.println ("Deck card is " + (Deck.get(RandDeck)));
 		System.out.println ();
 		
+		String PCard = "";
 		
 		//Player Turn
+	
 	Scanner PInput = new Scanner(System.in);
 	System.out.println ("Choose a card to bid from the your deck below to play: ");	
+	System.out.println ();	
 	System.out.println (PlayerDeck);
-	String PCard = PInput.next();
+	PCard = PInput.next();
+	boolean HandVal = PlayerDeck.contains(PCard); //checks for valid input
+	while (HandVal == false) 
+	{
+		System.out.println ("Invalid input. Please try again.");
+		System.out.println ();	
+		System.out.println ("Choose a card to bid from the your deck below to play: ");	
+		System.out.println (PlayerDeck);
+		PCard = PInput.next();
+	}
+
+	
+	
     System.out.println("You played: " + PCard);
     int PLocation = PlayerDeck.indexOf (PCard);
 	PlayerDeck.remove (PLocation);
-	//PlayerDeck.add (PLocation, "_");
 	int PcompareValue = 0;
 	if (PCard.equals("ace"))
 		PcompareValue = 1;
@@ -110,8 +124,9 @@ System.out.println ();
 	else if (PCard.equals("king"))
 		PcompareValue = 13;
 	
+	//System.out.println (PlayerDeck);
 
-	//Computer Turn (6 turns Matching/ 6 Random Strategy)
+	//Computer Turn (Random Strategy)
 	Random AIgen = new Random();
 	int RandAI = 0;
 	if (i<=6)
@@ -119,7 +134,7 @@ System.out.println ();
 	if (i>6)
 		 RandAI = AIgen.nextInt (13-i);
 	String AIplay = AIDeck.get(RandAI);
-	System.out.println ("Your opponent played: " + AIplay);
+	System.out.println ("Your oppenent played: " + AIplay);
 	AIDeck.remove (RandAI);
 	
 	int AIcompareValue = 0;
@@ -232,9 +247,7 @@ System.out.println ("-----------------------------------------------------------
 	}
 	//Printing the scores
 	System.out.println("The AI's score is: " + AIscore);
-	System.out.println ("AI Cards" + AIwin);
 	System.out.println("Your score is: " + Pscore);
-	System.out.println ("Your Cards" + Pwin);
 	//Comparing the scores
 	if (AIscore > Pscore)
 		System.out.println("You lose");
@@ -247,5 +260,3 @@ System.out.println ("-----------------------------------------------------------
 	}
 
 }
-
-
