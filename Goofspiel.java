@@ -110,9 +110,8 @@ System.out.println ();
 	else if (PCard.equals("king"))
 		PcompareValue = 13;
 	
-	//System.out.println (PlayerDeck);
 
-	//Computer Turn (Random Strategy)
+	//Computer Turn (6 turns Matching/ 6 Random Strategy)
 	Random AIgen = new Random();
 	int RandAI = 0;
 	if (i<=6)
@@ -120,7 +119,7 @@ System.out.println ();
 	if (i>6)
 		 RandAI = AIgen.nextInt (13-i);
 	String AIplay = AIDeck.get(RandAI);
-	System.out.println ("Your oppenent played: " + AIplay);
+	System.out.println ("Your opponent played: " + AIplay);
 	AIDeck.remove (RandAI);
 	
 	int AIcompareValue = 0;
@@ -233,7 +232,9 @@ System.out.println ("-----------------------------------------------------------
 	}
 	//Printing the scores
 	System.out.println("The AI's score is: " + AIscore);
+	System.out.println ("AI Cards" + AIwin);
 	System.out.println("Your score is: " + Pscore);
+	System.out.println ("Your Cards" + Pwin);
 	//Comparing the scores
 	if (AIscore > Pscore)
 		System.out.println("You lose");
@@ -246,3 +247,5 @@ System.out.println ("-----------------------------------------------------------
 	}
 
 }
+
+
